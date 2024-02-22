@@ -1,10 +1,15 @@
 package com.example.sample1app;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.NamedQueries;
+import jakarta.persistence.NamedQuery;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Max;
@@ -14,6 +19,16 @@ import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name="people")
+@NamedQueries ( {
+		@NamedQuery(
+				name="findWithName",
+				query="from Person where name like :fname"
+		),
+		@NamedQuery(
+				name="findByAge",
+				query="from Person where age >= :min and age < :max"
+		)
+})
 public class Person {
 
 //	@Id
@@ -91,5 +106,16 @@ public class Person {
 	}
 	public void setMemo(String memo) {
 		this.memo = memo;
+	}
+	
+	@OneToMany(mappedBy="Person")
+	@Column(nullable = true)
+	private List<Message> messages;
+	
+	public List<Message> getMessages() {
+		return this.messages;
+	}
+	public void setMessages(List<Message> messages) {
+		this.messages = messages;
 	}
 }
