@@ -15,4 +15,5 @@ public class SampleConfigure{
 	public RestTemplate restTemplate(RestTemplateBuilder builder) {
 		return builder.build();
 	}
+	//
 }
