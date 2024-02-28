@@ -82,7 +82,8 @@ public class SampleSecurityConfig {
 				.anyRequest().permitAll();
 		});
 		http.formLogin(form -> {
-			form.defaultSuccessUrl("/secret");
+			form.defaultSuccessUrl("/secret")
+				.loginPage("/login");
 		});
 		return http.build();
 	}
