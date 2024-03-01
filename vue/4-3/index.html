@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+        <link rel="stylesheet" href="./css/style.css" />
+        <title></title>
+    </head>
+    <body>
+        <div id="app">
+            <button class="button" @click="increment">+1</button>
+            <button class="button" @click="decrement">-1</button>
+            <p>{{count}}</p>
+            <p v-if="count >= 80" class="passed">ランクA</p>
+            <p v-else-if="count >= 60">ランクB</p>
+            <p v-else>ランクC</p>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="./script/script.js"></script>
+    </body>
+</html>
